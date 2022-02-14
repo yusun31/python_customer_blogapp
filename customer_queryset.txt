@@ -1,0 +1,39 @@
+In [1]: from customer.models import Customer
+
+In [2]: Customer.objects.all()
+Out[2]: <QuerySet [<Customer: Customer object (1)>, <Customer: Customer object (2)>]>
+
+In [3]: exit()
+
+In [1]: from customer.models import Customer
+
+In [2]: Customer.objects.all()
+Out[2]: <QuerySet [<Customer: 송유선(1)>, <Customer: 이영준(2)>]>
+
+In [3]: custs = Customer.objects.all()
+
+In [4]: type(custs)
+Out[4]: django.db.models.query.QuerySet
+
+In [5]: for cus in custs:
+   ...:     print(cus.name, cus.email, cus.birthdate, cus.gender, cus.id)
+   ...: 
+송유선 aa@aa.com 2012-05-01 False 1 // female = False
+이영준 bb@bb.com 2021-01-04 True 2 // male = True
+
+In [6]: Customer.objects.get(gender=True)
+Out[6]: <Customer: 이영준(2)>
+
+In [7]: Customer.objects.get(id=1)
+Out[7]: <Customer: 송유선(1)>
+
+In [8]: Customer.objects.order_by('-birthdate') // '-birthdate' : -있으면 생일이 더 빠른 사람 먼저 출력(내림차순정렬)
+Out[8]: <QuerySet [<Customer: 이영준(2)>, <Customer: 송유선(1)>]>
+
+In [9]: from django.utils import timezone
+
+In [10]: timezone.now()
+Out[10]: datetime.datetime(2022, 2, 14, 9, 4, 3, 377176, tzinfo=<UTC>)
+
+In [19]: Customer.objects.create(name='정수빈',birthdate=timezone.now(), email='cc@cc.com', gender=True)
+Out[19]: <Customer: 정수빈(3)>
