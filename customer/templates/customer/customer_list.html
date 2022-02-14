@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h2>Customer App</h2>
-</body>
-</html>
+{% extends 'customer/base.html' %}
+
+{% block content %}
+    {% for cus in customer_list %}
+        <div class="customer">
+             <div class="date">
+                <p> {{cus.birthdate}}</p>
+            </div>
+            <h1><a href="{% url 'customer_detail' pk=cus.pk %}"> {{cus.name}}</a></h1>
+            <p>{{cus.email}}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
