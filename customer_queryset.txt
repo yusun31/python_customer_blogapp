@@ -32,8 +32,8 @@ Out[8]: <QuerySet [<Customer: 이영준(2)>, <Customer: 송유선(1)>]>
 
 In [9]: from django.utils import timezone
 
-In [10]: timezone.now()
+In [10]: timezone.now() // 현재 시간 출력
 Out[10]: datetime.datetime(2022, 2, 14, 9, 4, 3, 377176, tzinfo=<UTC>)
 
-In [19]: Customer.objects.create(name='정수빈',birthdate=timezone.now(), email='cc@cc.com', gender=True)
+In [19]: Customer.objects.create(name='정수빈',birthdate=timezone.now(), email='cc@cc.com', gender=True) // 데이터 추가
 Out[19]: <Customer: 정수빈(3)>
