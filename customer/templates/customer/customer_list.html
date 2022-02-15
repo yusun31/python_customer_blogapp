@@ -3,11 +3,18 @@
 {% block content %}
     {% for cus in customer_list %}
         <div class="customer">
+             <h1><a href="{% url 'customer_detail' pk=cus.pk %}"> {{cus.name}}</a></h1>
              <div class="date">
-                <p> {{cus.birthdate}}</p>
+                <p> 생년월일 : {{cus.birthdate}}</p>
             </div>
-            <h1><a href="{% url 'customer_detail' pk=cus.pk %}"> {{cus.name}}</a></h1>
+            {% if cus.gender is True %}
+                <p>남자</p>
+            {% else %}
+                <p>여자</p>
+            {% endif %}
             <p>{{cus.email}}</p>
         </div>
+    {% empty %}
+        <p>Customer Not Exist!</p>
     {% endfor %}
 {% endblock %}

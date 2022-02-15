@@ -1,11 +1,17 @@
 {% extends 'customer/base.html' %}
 
 {% block content %}
-    <div class="customer">
-        <div class="date">
-            <p> {{ cus.birthdate }}</p>
-    </div>
-    <h1>{{ cus.name }}</h1>
-    <p>{{ cus.email }}</p>
-</div>
+     <div class="customer">
+            <h1>{{ cus.name }} </h1>
+            <h1>{{ cus.email }} </h1>
+             <div class="date">
+                <p> 생년월일 : {{cus.birthdate}}</p>
+            </div>
+            {% if cus.gender is True %}
+                <p>남자</p>
+            {% else %}
+                <p>여자</p>
+            {% endif %}
+            <p>{{cus.email}}</p>
+        </div>
 {% endblock %}
