@@ -1,18 +1,19 @@
 {% extends 'customer/base.html' %}
 
 {% block content %}
-    {% for cus in customer_list %}
+    {% for cust in customer_list %}
         <div class="customer">
-             <h1><a href="{% url 'customer_detail' pk=cus.pk %}"> {{cus.name}}</a></h1>
-             <div class="date">
-                <p> 생년월일 : {{cus.birthdate}}</p>
+            <h1><a href="{% url 'customer_detail' pk=cust.pk %}"> {{cust.name}}</a></h1>
+            <p>{{ cust.email }}</p>
+            <div class="date">
+                <p> 생년월일 : {{cust.birthdate}}</p>
             </div>
-            {% if cus.gender is True %}
+            {% if cust.gender is True %}
                 <p>남자</p>
             {% else %}
                 <p>여자</p>
             {% endif %}
-            <p>{{cus.email}}</p>
+            <a href="{% url 'customer_detail' pk=cust.pk %}"> Comments: {{ cust.approved_comments.count }}</a>
         </div>
     {% empty %}
         <p>Customer Not Exist!</p>
